@@ -7,7 +7,7 @@ ENV ARCH ${ARCH}
 
 # Install build requirements
 RUN dnf update -y && \
-sudo dnf install -y \
+    sudo dnf install -y \
     git \
     clang \
     cmake \
@@ -18,7 +18,10 @@ sudo dnf install -y \
     mesa-libGL-devel \
     libglvnd-devel \
     qt6-qtbase-devel \
+    qt6-qtpositioning \
+    qt6-qtpositioning-devel \
     qt6-qtsvg-devel \
+    python3-protobuf \
     sqlite-devel \
     && dnf clean all
 

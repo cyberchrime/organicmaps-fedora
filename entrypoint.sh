@@ -4,6 +4,9 @@ set -e
 set -u
 
 cd /ws
-git clone https://github.com/organicmaps/organicmaps organicmaps
-cd organicmaps
+if [[ ! -e comaps ]]; then
+    git clone --recurse-submodules https://codeberg.org/comaps/comaps.git comaps
+fi
+cd comaps
+./configure.sh
 ./tools/unix/build_omim.sh -r desktop

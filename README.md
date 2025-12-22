@@ -1,10 +1,10 @@
-# Zyn-Fusion-Fedora
+# CoMaps-Fedora
 
-A Dockerfile to build [Organic Maps](https://github.com/organicmaps/organicmaps/) for Fedora.
+A Dockerfile to build [CoMaps](https://codeberg.org/comaps/comaps/) for Fedora.
 
 Currently tested for :
 
-- Fedora 38
+- Fedora 42
 - x86_64 architectures
 
 ## Requirements
@@ -22,7 +22,7 @@ make
 
 ## FEDORA\_VERSION
 
-You can set your Fedora version in the file `FEDORA_VERSION`.
+You can set your Fedora version in the `Makefile`.
 
 ## Sources
 
