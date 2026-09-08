@@ -1,13 +1,15 @@
-ARG ARCH
-ARG FEDORA_VERSION
-FROM docker.io/${ARCH}/fedora:${FEDORA_VERSION}
-
-ARG ARCH
-ENV ARCH ${ARCH}
+FROM docker.io/amd64/fedora:42
 
 # Install build requirements
 RUN dnf update -y && \
     sudo dnf install -y \
+    jq \
+    which \
+    icu \
+    curl \
+    awk \
+    wget \
+    optipng \
     git \
     clang \
     cmake \
@@ -21,12 +23,19 @@ RUN dnf update -y && \
     qt6-qtpositioning \
     qt6-qtpositioning-devel \
     qt6-qtsvg-devel \
-    python3-protobuf \
+    python3-pip \
     sqlite-devel \
-    && dnf clean all
+    libXrandr-devel \
+    libXinerama-devel \
+    libXcursor-devel \
+    libXi-devel \
+    && curl -fsSL https://opencode.ai/install | bash \
+    && dnf clean all \
+    && pip install "protobuf~=3.20.0"
 
 
 # Add entrypoint
+
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
